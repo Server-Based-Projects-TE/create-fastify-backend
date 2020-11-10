@@ -17,3 +17,8 @@ npm i --save-dev prettier
 ```bash
 npm install eslint eslint-config-prettier eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser --save-dev
 ```
+
+## Documentation
+
+- [Fastify - Getting Started](https://www.fastify.io/docs/latest/Getting-Started/)
+- [Fastify - Typescript](https://www.fastify.io/docs/latest/TypeScript/)
