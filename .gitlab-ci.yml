@@ -1,0 +1,38 @@
+# @docs https://docs.gitlab.com/ee/ci/yaml
+
+image: node:14 # current lts
+
+variables:
+  TERM: xterm-256color
+
+before_script:
+  - npm install
+
+stages:
+  - test
+  - build
+
+typescript:
+  stage: test
+  script:
+    - npm run typecheck
+
+prettier:
+  stage: test
+  script:
+    - npm run prettycheck
+
+lint:
+  stage: test
+  script:
+    - npm run lint
+
+jest:
+  stage: test
+  script:
+    - npm run test
+
+build:
+  stage: build
+  script:
+    - npm run build
