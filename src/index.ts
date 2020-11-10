@@ -1,11 +1,12 @@
-import { fastify, log } from './fastify';
+import { buildFastify } from './app';
 import { NODE_HOST, NODE_PORT } from './config/env';
+import { logger } from './config/logger';
 
-// Run the server!
-fastify.listen(NODE_PORT, NODE_HOST, (err) => {
+const server = buildFastify({ logger });
+
+server.listen(NODE_PORT, NODE_HOST, (err) => {
   if (err) {
-    log.error(err.message, err.stack);
+    server.log.error(err.message, err.stack);
     process.exit(1);
   }
-  // app.log.info(`server listening on ${address}`);
 });
