@@ -1,6 +1,7 @@
 import { buildFastify } from './app';
 import { NODE_HOST, NODE_PORT } from './config/env';
 import { logger } from './config/logger';
+import './config/setup';
 
 const server = buildFastify({ logger });
 
