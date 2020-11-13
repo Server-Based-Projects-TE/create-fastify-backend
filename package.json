@@ -34,7 +34,6 @@
   "dependencies": {
     "@mgcrea/fastify-session": "^0.9.7",
     "@mgcrea/fastify-session-redis-store": "^0.9.1",
-    "connect-redis": "^5.0.0",
     "fastify": "^3.8.0",
     "fastify-cookie": "^4.1.0",
     "ioredis": "^4.19.2",
