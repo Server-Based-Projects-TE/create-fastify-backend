@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { FastifyLoggerOptions } from 'fastify';
+import { IS_DEV } from './env';
 
 export const logger: FastifyLoggerOptions = {
+  level: IS_DEV ? 'debug' : 'info',
   prettyPrint: {
     colorize: true,
     ignore: 'pid,hostname',
+    translateTime: 'yyyy-mm-dd HH:MM:ss.l',
+    // levelFirst: true
   },
   serializers: {
     req(request) {
