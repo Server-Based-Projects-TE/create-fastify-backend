@@ -1,8 +1,9 @@
 {
   "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
+    "incremental": true,
     "esModuleInterop": true,
-    "declaration": true,
+    "resolveJsonModule": true,
     "outDir": "./build",
     "rootDir": "./src",
     "baseUrl": "./",

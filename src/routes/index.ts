@@ -1,2 +1,3 @@
-export * from './basicRoutes';
-export * from './usersRoutes';
+export * from './base';
+export * from './sessions';
+export * from './users';
