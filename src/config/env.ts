@@ -6,6 +6,6 @@ export const IS_PROD = NODE_ENV === 'production';
 export const IS_TEST = NODE_ENV === 'test';
 
 export const REDIS_URI = process.env.REDIS_URI || 'redis://localhost:6379/1';
-export const SESSION_KEY = process.env.SESSION_KEY;
+export const SESSION_KEY = process.env.SESSION_KEY || 'U7SkyCUsC5NE5q1VgSNouUGZYE/iYdPlS7IkZj0MziA=';
 export const SESSION_SECRET = process.env.SESSION_SECRET || 'a secret with minimum length of 32 characters';
 export const SESSION_TTL = process.env.SESSION_TTL ? Number(process.env.SESSION_TTL) : 864e3; // 1 day in seconds
