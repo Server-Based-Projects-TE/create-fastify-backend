@@ -5,12 +5,31 @@ image: node:14 # current lts
 variables:
   TERM: xterm-256color
 
-before_script:
-  - npm install
-
 stages:
+  - install
   - test
   - build
+  - release
+
+cache: &global_cache
+  key: ${CI_PROJECT_ID}
+  paths:
+    - node_modules/
+  policy: pull
+
+install:
+  stage: install
+  script:
+    - npm install
+  cache:
+    <<: *global_cache
+    policy: push
+  rules:
+    - changes:
+        - yarn.lock
+        - package-lock.json
+    - when: manual
+      allow_failure: true
 
 typescript:
   stage: test
@@ -49,9 +68,7 @@ release:
   variables:
     IMAGE_DEST: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
   script:
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}"
-      > /kaniko/.docker/config.json
-    - /kaniko/executor --cache=true --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination
-      $IMAGE_DEST
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --cache=true --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $IMAGE_DEST
   only:
     - master
