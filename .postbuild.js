@@ -1,5 +1,7 @@
-const { name, version } = require('./package.json');
+const package = require('./package.json');
 const { execSync } = require('child_process');
+
+const { name, version } = package;
 
 const commit = {
   hash: execSync("git rev-parse --short HEAD | tr -d '\n'").toString(),
