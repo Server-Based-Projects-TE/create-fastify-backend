@@ -5,5 +5,5 @@ const date = new Date(
 ).toISOString();
 require('fs').writeFileSync(
   './src/config/version.json',
-  JSON.stringify({ name, version, commit: { hash, date }, build: { date: new Date().toISOString() } }, null, 2)
+  JSON.stringify({ name, version, commit: { hash, date }, build: { date: new Date().toISOString() } }, null, 2) + '\n'
 );

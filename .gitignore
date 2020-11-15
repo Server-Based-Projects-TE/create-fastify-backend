@@ -4,3 +4,4 @@
 *.tsbuildinfo
 build/
 node_modules/
+*.env
