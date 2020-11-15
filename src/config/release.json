@@ -1,11 +1,10 @@
 {
-  "name": "create-fastify-backend",
-  "version": "1.0.0",
   "commit": {
     "hash": "0000000",
     "date": "1970-01-01T00:00:00.000Z"
   },
   "build": {
+    "number": 0,
     "date": "1970-01-01T00:00:00.000Z"
   }
 }

@@ -1,9 +1,17 @@
 const { name, version } = require('./package.json');
-const hash = require('child_process').execSync("git rev-parse --short HEAD | tr -d '\n'").toString();
-const date = new Date(
-  require('child_process').execSync('git --no-pager log -1 --format="%ai"').toString()
-).toISOString();
+const { execSync } = require('child_process');
+
+const commit = {
+  hash: execSync("git rev-parse --short HEAD | tr -d '\n'").toString(),
+  date: new Date(execSync('git --no-pager log -1 --format="%ai"').toString()).toISOString(),
+};
+
+const build = {
+  number: Number(execSync('git rev-list master --first-parent --count').toString()),
+  date: new Date().toISOString(),
+};
+
 require('fs').writeFileSync(
   './build/config/release.json',
-  JSON.stringify({ name, version, commit: { hash, date }, build: { date: new Date().toISOString() } }, null, 2) + '\n'
+  JSON.stringify({ name, version, commit, build }, null, 2) + '\n'
 );

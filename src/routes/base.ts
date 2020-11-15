@@ -1,5 +1,6 @@
 import { FastifyInstance } from 'fastify';
-import version from 'src/config/release.json';
+import { PACKAGE_NAME, PACKAGE_VERSION } from 'src/config/env';
+import release from 'src/config/release.json';
 import { createError } from 'src/utils';
 
 export const baseRoutes = async (fastify: FastifyInstance): Promise<void> => {
@@ -8,7 +9,7 @@ export const baseRoutes = async (fastify: FastifyInstance): Promise<void> => {
   });
 
   fastify.get('/version', async () => {
-    return version;
+    return { name: PACKAGE_NAME, version: PACKAGE_VERSION, release };
   });
 
   fastify.get('/500', async () => {
