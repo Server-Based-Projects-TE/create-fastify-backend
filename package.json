@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_PATH=. ts-node-dev --require dotenv/config --respawn --transpile-only src/index",
+    "inspect": "NODE_PATH=. node --require dotenv/config --require ts-node/register/transpile-only --inspect src/index",
     "build": "rm -rf build/*; tsc --build",
     "test": "jest",
     "typecheck": "tsc --noEmit",
