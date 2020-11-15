@@ -1,4 +1,4 @@
-export { name as PACKAGE_NAME, version as PACKAGE_VERSION } from './../../package.json';
+export { name as PACKAGE_NAME, version as PACKAGE_VERSION } from './release.json';
 export const NODE_HOST = process.env.NODE_HOST || '127.0.0.1';
 export const NODE_PORT = process.env.NODE_PORT ? Number(process.env.NODE_PORT) : 3000;
 export const NODE_ENV = process.env.NODE_ENV || 'development';

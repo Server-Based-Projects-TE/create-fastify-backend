@@ -41,7 +41,6 @@ build:
       - build/
     expire_in: 1 week
 
-
 release:
   stage: release
   image:
