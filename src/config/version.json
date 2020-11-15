@@ -2,10 +2,10 @@
   "name": "create-fastify-backend",
   "version": "1.0.0",
   "commit": {
-    "hash": "5bb8a90",
-    "date": "2020-11-15T15:26:48.000Z"
+    "hash": "7a8227b",
+    "date": "2020-11-15T17:45:51.000Z"
   },
   "build": {
-    "date": "2020-11-15T17:42:21.928Z"
+    "date": "2020-11-15T18:15:16.038Z"
   }
 }

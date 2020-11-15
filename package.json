@@ -8,9 +8,9 @@
   "scripts": {
     "start": "NODE_PATH=. ts-node-dev --require dotenv/config --respawn --transpile-only src/index",
     "inspect": "NODE_PATH=. node --require dotenv/config --require ts-node/register/transpile-only --inspect src/index",
-    "build": "rm -rf build/*; tsc --build",
+    "build": "rm -rf build/*; tsc --build src/ && tsc-alias -p src/tsconfig.json",
     "test": "jest",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit -p src/",
     "prettycheck": "prettier --check 'src/'",
     "lint": "eslint src/",
     "prebuild": "node .prebuild.js"
@@ -31,6 +31,7 @@
     "prettier": "^2.1.2",
     "ts-jest": "^26.4.4",
     "ts-node-dev": "^1.0.0",
+    "tsc-alias": "^1.1.5",
     "typescript": "^4.0.5"
   },
   "dependencies": {
