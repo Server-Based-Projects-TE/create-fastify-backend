@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import version from 'src/config/version.json';
+import version from 'src/config/release.json';
 import { createError } from 'src/utils';
 
 export const baseRoutes = async (fastify: FastifyInstance): Promise<void> => {

@@ -4,6 +4,6 @@ const date = new Date(
   require('child_process').execSync('git --no-pager log -1 --format="%ai"').toString()
 ).toISOString();
 require('fs').writeFileSync(
-  './src/config/version.json',
+  './build/config/release.json',
   JSON.stringify({ name, version, commit: { hash, date }, build: { date: new Date().toISOString() } }, null, 2) + '\n'
 );

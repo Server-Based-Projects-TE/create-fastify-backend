@@ -8,12 +8,12 @@
   "scripts": {
     "start": "NODE_PATH=. ts-node-dev --require dotenv/config --respawn --transpile-only src/index",
     "inspect": "NODE_PATH=. node --require dotenv/config --require ts-node/register/transpile-only --inspect src/index",
-    "build": "rm -rf build/*; tsc --build src/ && tsc-alias -p src/tsconfig.json",
+    "build": "rm -rf build/*; tsc --build src/",
     "test": "jest",
     "typecheck": "tsc --noEmit -p src/",
     "prettycheck": "prettier --check 'src/'",
     "lint": "eslint src/",
-    "prebuild": "node .prebuild.js"
+    "postbuild": "tsc-alias -p src/tsconfig.json && node .postbuild.js"
   },
   "devDependencies": {
     "@tsconfig/node14": "^1.0.0",
