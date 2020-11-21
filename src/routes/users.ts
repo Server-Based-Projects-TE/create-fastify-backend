@@ -8,6 +8,10 @@ const USERS: User[] = [
 ];
 
 export const usersRoutes = async (fastify: FastifyInstance): Promise<void> => {
+  const { requireUser } = fastify;
+
+  fastify.addHook('preValidation', requireUser());
+
   fastify.get('/users', async () => {
     const result = USERS;
     if (result.length === 0) {

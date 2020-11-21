@@ -1,13 +1,12 @@
 import { buildFastify } from './app';
 import { NODE_HOST, NODE_PORT } from './config/env';
-import { logger } from './config/logger';
 import './config/setup';
 
-const server = buildFastify({ logger });
+const server = buildFastify();
 
 server.listen(NODE_PORT, NODE_HOST, (err) => {
   if (err) {
-    server.log.error(err.message, err.stack);
+    server.log.error(`${err.message}\n${err.stack}`);
     process.exit(1);
   }
 });

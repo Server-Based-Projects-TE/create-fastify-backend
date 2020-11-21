@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`routes/sessions should receive a 200 on GET /me with a valid session 1`] = `
+Object {
+  "id": "1",
+  "username": "foo",
+}
+`;
+
+exports[`routes/sessions should receive a 200 on POST /login with valid credentials 1`] = `
+Object {
+  "ok": 1,
+  "user": Object {
+    "id": "1",
+    "username": "foo",
+  },
+}
+`;
+
+exports[`routes/sessions should receive a 400 on POST /login with missing credentials 1`] = `
+Object {
+  "error": "Bad Request",
+  "message": "Missing username or password",
+  "statusCode": 400,
+}
+`;
+
+exports[`routes/sessions should receive a 401 on GET /me without auth 1`] = `
+Object {
+  "error": "Unauthorized",
+  "message": "Unauthorized",
+  "statusCode": 401,
+}
+`;
+
+exports[`routes/sessions should receive a 403 on POST /login with invalid credentials 1`] = `
+Object {
+  "error": "Forbidden",
+  "message": "Invalid username or password",
+  "statusCode": 403,
+}
+`;

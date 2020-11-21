@@ -11,6 +11,3 @@ export const deserializeFromSession: DeserializeFunction<SerializedUser, Deseria
 ): Promise<DeserializedUser> => {
   return { id, username: 'foo' };
 };
-
-fastifyPassport.registerUserSerializer(serializeIntoSession);
-fastifyPassport.registerUserDeserializer(deserializeFromSession);

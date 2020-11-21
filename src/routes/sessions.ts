@@ -1,8 +1,9 @@
 import { FastifyInstance } from 'fastify';
 import fastifyPassport from 'fastify-passport';
-import { requireUser } from 'src/utils/auth';
 
 export const sessionsRoutes = async (fastify: FastifyInstance): Promise<void> => {
+  const { requireUser } = fastify;
+
   fastify.post(
     '/login',
     { preValidation: fastifyPassport.authenticate('local', { authInfo: false }) },
@@ -18,7 +19,7 @@ export const sessionsRoutes = async (fastify: FastifyInstance): Promise<void> =>
     return { ok: 1 };
   });
 
-  fastify.get('/me', requireUser, async (request) => {
+  fastify.get('/me', { preValidation: requireUser() }, async (request) => {
     return request.user;
   });
 };

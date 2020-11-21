@@ -2,7 +2,7 @@
 import { FastifyLoggerOptions } from 'fastify';
 import { IS_DEV } from './env';
 
-export const logger: FastifyLoggerOptions = {
+export const DEFAULT_LOGGER: FastifyLoggerOptions = {
   level: IS_DEV ? 'debug' : 'info',
   prettyPrint: {
     colorize: true,
