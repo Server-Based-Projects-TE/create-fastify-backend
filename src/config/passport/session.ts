@@ -1,5 +1,5 @@
 import { User } from 'src/typings';
-import fastifyPassport from 'fastify-passport';
+// import fastifyPassport from 'fastify-passport';
 import { DeserializeFunction, SerializeFunction } from 'fastify-passport/dist/Authenticator';
 
 export type SerializedUser = User['id'];
