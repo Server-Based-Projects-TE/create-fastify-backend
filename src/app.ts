@@ -23,6 +23,7 @@ export const buildFastify = (options: BuildFastifyOptions = {}): FastifyInstance
     store: IS_TEST ? new MemoryStore() : new RedisStore({ client: new Redis(REDIS_URI), ttl: SESSION_TTL }),
     key: SESSION_KEY,
     cookie: { secure: IS_PROD ? true : false, maxAge: SESSION_TTL },
+    saveUninitialized: false,
   });
 
   // Initialize passport
