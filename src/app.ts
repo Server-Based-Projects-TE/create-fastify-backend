@@ -1,3 +1,4 @@
+import fastifyRequestLogger from '@mgcrea/fastify-request-logger';
 import fastifySession, { MemoryStore } from '@mgcrea/fastify-session';
 import { RedisStore } from '@mgcrea/fastify-session-redis-store';
 import createFastify, { FastifyInstance, FastifyServerOptions } from 'fastify';
@@ -15,7 +16,10 @@ export type BuildFastifyOptions = FastifyServerOptions & FastifyAuthPluginOption
 
 export const buildFastify = (options: BuildFastifyOptions = {}): FastifyInstance => {
   const { logger = DEFAULT_LOGGER, ...otherOptions } = options;
-  const fastify = createFastify({ logger, ...otherOptions });
+  const fastify = createFastify({ logger, disableRequestLogging: true, ...otherOptions });
+
+  // Log requests
+  fastify.register(fastifyRequestLogger);
 
   // Support sessions using cookies
   fastify.register(fastifyCookie);

@@ -1,21 +1,26 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { FastifyLoggerOptions } from 'fastify';
-import { IS_DEV } from './env';
+import { FastifyLoggerOptions, FastifyRequest } from 'fastify';
+import { LOG_LEVEL } from './env';
+import prettifier from '@mgcrea/pino-pretty-compact';
 
 export const DEFAULT_LOGGER: FastifyLoggerOptions = {
-  level: IS_DEV ? 'debug' : 'info',
+  level: LOG_LEVEL,
   prettyPrint: {
-    colorize: true,
-    ignore: 'pid,hostname',
-    translateTime: 'yyyy-mm-dd HH:MM:ss.l',
+    // colorize: true,
+    // ignore: 'pid,hostname',
+    // translateTime: true,
+    // translateTime: 'yyyy-mm-dd HH:MM:ss.l',
     // levelFirst: true
   },
+  prettifier,
   serializers: {
-    req(request) {
+    // @ts-expect-error external typing error
+    req(request: FastifyRequest) {
       return {
+        id: request.id,
         method: request.method,
         url: request.url,
-        remoteAddress: request.socket.remoteAddress,
+        hostname: request.hostname,
         remotePort: request.socket.remotePort,
         // Including the headers in the log could be in violation
         // of privacy laws, e.g. GDPR. You should use the "redact" option to
@@ -26,22 +31,3 @@ export const DEFAULT_LOGGER: FastifyLoggerOptions = {
     },
   },
 };
-
-// const serializers = {
-//   req: function asReqValue (req) {
-//     return {
-//       method: req.method,
-//       url: req.url,
-//       version: req.headers['accept-version'],
-//       hostname: req.hostname,
-//       remoteAddress: req.ip,
-//       remotePort: req.socket.remotePort
-//     }
-//   },
-//   err: pino.stdSerializers.err,
-//   res: function asResValue (reply) {
-//     return {
-//       statusCode: reply.statusCode
-//     }
-//   }
-// }
