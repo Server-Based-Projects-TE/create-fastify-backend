@@ -1,4 +1,5 @@
 import fastifyRequestLogger from '@mgcrea/fastify-request-logger';
+import fastifyGracefulExit from '@mgcrea/fastify-graceful-exit';
 import fastifySession, { MemoryStore } from '@mgcrea/fastify-session';
 import { RedisStore } from '@mgcrea/fastify-session-redis-store';
 import createFastify, { FastifyInstance, FastifyServerOptions } from 'fastify';
@@ -18,8 +19,9 @@ export const buildFastify = (options: BuildFastifyOptions = {}): FastifyInstance
   const { logger = DEFAULT_LOGGER, ...otherOptions } = options;
   const fastify = createFastify({ logger, disableRequestLogging: true, ...otherOptions });
 
-  // Log requests
+  // Generic fastify plugins
   fastify.register(fastifyRequestLogger);
+  fastify.register(fastifyGracefulExit);
 
   // Support sessions using cookies
   fastify.register(fastifyCookie);
