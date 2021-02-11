@@ -20,7 +20,7 @@ export const buildFastify = (options: BuildFastifyOptions = {}): FastifyInstance
   const fastify = createFastify({ logger, disableRequestLogging: true, ...otherOptions });
 
   // Generic fastify plugins
-  fastify.register(fastifyRequestLogger);
+  fastify.register(fastifyRequestLogger, { ignoredPaths: ['/healthz'] });
   fastify.register(fastifyGracefulExit);
 
   // Support sessions using cookies

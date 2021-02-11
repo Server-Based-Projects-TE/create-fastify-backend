@@ -7,6 +7,10 @@ export const baseRoutes = async (fastify: FastifyInstance): Promise<void> => {
     return { hello: 'world' };
   });
 
+  fastify.get('/healthz', async () => {
+    return { ok: 1 };
+  });
+
   fastify.get('/version', async () => {
     return release;
   });
