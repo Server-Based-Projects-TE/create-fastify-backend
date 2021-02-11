@@ -7,7 +7,7 @@ export const DEFAULT_LOGGER: FastifyLoggerOptions = {
   level: LOG_LEVEL,
   prettyPrint: {
     // colorize: true,
-    // ignore: 'pid,hostname',
+    ignore: ['pid', 'hostname', 'module', 'plugin', 'hook'].join(','),
     // translateTime: true,
     // translateTime: 'yyyy-mm-dd HH:MM:ss.l',
     // levelFirst: true

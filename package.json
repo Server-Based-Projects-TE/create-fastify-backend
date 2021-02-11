@@ -19,7 +19,7 @@
   "dependencies": {
     "@mgcrea/fastify-graceful-exit": "^0.2.0",
     "@mgcrea/fastify-request-logger": "^0.3.0",
-    "@mgcrea/fastify-session": "^0.12.1",
+    "@mgcrea/fastify-session": "^0.13.0",
     "@mgcrea/fastify-session-redis-store": "^0.9.1",
     "@mgcrea/pino-pretty-compact": "^0.4.4",
     "@types/pino": "^6.3.5",
