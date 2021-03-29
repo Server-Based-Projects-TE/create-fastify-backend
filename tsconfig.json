@@ -1,0 +1,16 @@
+{
+  "extends": "@tsconfig/node14",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./build",
+    "baseUrl": "./src",
+    "paths": {
+      "src/*": ["./*"]
+    },
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "declaration": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

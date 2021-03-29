@@ -6,15 +6,16 @@
   "author": "Olivier Louvignes <olivier@mgcrea.io>",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_PATH=. ts-node-dev --require dotenv/config --respawn --transpile-only --project src/tsconfig.json src/index",
-    "start:node": "NODE_PATH=. ts-node --require dotenv/config --transpile-only --project src/tsconfig.json src/index",
+    "start": "NODE_PATH=. ts-node-dev --require dotenv/config --respawn --transpile-only src/index",
+    "cli": "NODE_PATH=. ts-node --require dotenv/config --transpile-only src/bin/puma",
     "inspect": "NODE_PATH=. node --require dotenv/config --require ts-node/register/transpile-only --inspect src/index",
-    "build": "rm -rf build/*; tsc --build src/",
-    "test": "jest",
-    "typecheck": "tsc --noEmit -p src/",
+    "build": "rm -rf build/*; tsc --build",
+    "test": "jest --runInBand --forceExit",
+    "test:watch": "jest --runInBand --forceExit --watch",
+    "typecheck": "tsc --noEmit",
     "prettycheck": "prettier --check 'src/'",
     "lint": "eslint src/",
-    "postbuild": "tsc-alias -p src/tsconfig.json && node .postbuild.js"
+    "postbuild": "tsc-alias -p tsconfig.json && node .postbuild.js"
   },
   "dependencies": {
     "@mgcrea/fastify-graceful-exit": "^0.2.0",
