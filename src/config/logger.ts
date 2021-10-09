@@ -14,7 +14,6 @@ export const DEFAULT_LOGGER: FastifyLoggerOptions = {
   },
   prettifier,
   serializers: {
-    // @ts-expect-error external typing error
     req(request: FastifyRequest) {
       return {
         id: request.id,
